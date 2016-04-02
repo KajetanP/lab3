@@ -1,5 +1,7 @@
 #include "Slav.h"
 #include <fstream>
+#include <stdlib.h>
+#include <iterator>
 
 using namespace std;
 
