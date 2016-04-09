@@ -29,3 +29,11 @@ string Slav::description()
 {
 	return string("  ") + _name + " [" + to_string(_id) + "]";
 }
+
+_gender Slav::gender()
+{
+	if(_name[_name.length() - 1] == 'a')
+		return female;
+	else
+		return male;
+}

@@ -24,6 +24,7 @@ void showMeAdapterSizes(queue <Slav *>, stack <Slav *>);
 
 void containers(Slav *, int);
 void adapters(Slav *, int);
+void returnOfSameGender(Slav *, int);
 
 int main(int argc, char const *argv[])
 {
@@ -35,6 +36,7 @@ int main(int argc, char const *argv[])
 
 	containers(slavs, n);
 	adapters(slavs, n);
+	returnOfSameGender(slavs, n);
 
 	delete [] slavs;
 }
@@ -144,4 +146,30 @@ void showMeAdapterSizes(queue <Slav *> queue, stack <Slav *> stack)
 		stack.size(),
 		Slav::counter());
 
+}
+
+void returnOfSameGender(Slav * slavs, int n)
+{
+	printf("## gender\n");
+	map <_gender, vector<Slav*>> mapOfSlavsByGender;
+
+	for(int i = 0 ; i < n ; i++)
+	{
+		if(slavs[i].gender() == male)
+			mapOfSlavsByGender[male].push_back(&slavs[i]);
+		else
+			mapOfSlavsByGender[female].push_back(&slavs[i]);
+	}
+
+	printf("## man\n");
+	for(vector<Slav *>::iterator i = mapOfSlavsByGender[male].begin() ; i != mapOfSlavsByGender[male].end() ; i++)
+	{
+		cout << (*i)->description() << endl;
+	}
+
+	printf("## woman\n");
+	for(vector<Slav *>::iterator i = mapOfSlavsByGender[female].begin() ; i != mapOfSlavsByGender[female].end() ; i++)
+	{
+		cout << (*i)->description() << endl;
+	}
 }
